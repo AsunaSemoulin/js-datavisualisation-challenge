@@ -1,3 +1,4 @@
+// FIRST CHART
 let heading = document.getElementById("firstHeading");
 let canvas = document.createElement("canvas");
 canvas.id = "myChart";
@@ -67,6 +68,7 @@ let updateChart = async () => {
 
 setInterval(updateChart, 1000);
 
+// SECOND CHART
 let canvas2 = document.createElement("canvas");
 canvas2.id = "myChart2";
 
@@ -78,6 +80,7 @@ let rowsTable1 = table1.rows;
 let yearTable1 = [];
 let dataTable1 = [];
 
+// UTILITY FUNCTION: Generate random RGB color
 let getRandomRGB = () => {
     let r = Math.random() * 255;
     let g = Math.random() * 255;
@@ -91,7 +94,7 @@ for (let i = 2; i < rowsTable1[1].cells.length; i++) {
 }
 
 for (let i = 2; i < rowsTable1.length; i++) {
-    countryData = rowsTable1[i].cells[1].innerHTML;
+    let countryData = rowsTable1[i].cells[1].innerHTML;
 
     let numbersData = [];
     let tableRow = rowsTable1[i];
@@ -111,8 +114,52 @@ let ctx2 = document.getElementById("myChart2").getContext('2d');
 let myChart2 = new Chart(ctx2, {
     type: 'bar',
     data: {
-        labels: yearTable1, //-----------years
-        datasets: dataTable1 //-----------country for loop
+        labels: yearTable1,
+        datasets: dataTable1
+    },
+    options: {
+    }
+});
+
+//THIRD CHART
+let canvas3 = document.createElement("canvas");
+canvas3.id = "myChart3";
+
+let table2 = document.getElementById("table2");
+
+table2.parentNode.insertBefore(canvas3, table2);
+
+let rowsTable2 = table2.rows;
+let yearTable2 = [];
+let dataTable2 = [];
+
+for (let i = 2; i < rowsTable2[0].cells.length; i++) {
+    yearTable2[i - 2] = rowsTable2[0].cells[i].innerHTML;
+}
+
+for (let i = 2; i < rowsTable2.length; i++) {
+    let countryData = rowsTable2[i].cells[1].innerHTML;
+
+    let numbersData = [];
+    let tableRow = rowsTable2[i];
+    let jsonData = {
+        label: countryData,
+        data: numbersData,
+        backgroundColor: getRandomRGB()
+    };
+
+    for (let a = 2; a < tableRow.cells.length; a++) {
+        numbersData.push(parseInt(tableRow.cells[a].innerHTML));
+    }
+    dataTable2.push(jsonData);
+}
+
+let ctx3 = document.getElementById("myChart3").getContext('2d');
+let myChart3 = new Chart(ctx3, {
+    type: 'bar',
+    data: {
+        labels: yearTable2,
+        datasets: dataTable2
     },
     options: {
     }
