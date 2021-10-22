@@ -98,15 +98,17 @@ for (let i = 2; i < rowsTable1.length; i++) {
 
     let numbersData = [];
     let tableRow = rowsTable1[i];
+
+    for (let a = 2; a < tableRow.cells.length; a++) {
+        numbersData.push(parseInt(tableRow.cells[a].innerHTML));
+    }
+
     let jsonData = {
         label: countryData,
         data: numbersData,
         backgroundColor: getRandomRGB()
     };
 
-    for (let a = 2; a < tableRow.cells.length; a++) {
-        numbersData.push(parseInt(tableRow.cells[a].innerHTML));
-    }
     dataTable1.push(jsonData);
 }
 
@@ -142,15 +144,17 @@ for (let i = 2; i < rowsTable2.length; i++) {
 
     let numbersData = [];
     let tableRow = rowsTable2[i];
+
+    for (let a = 2; a < tableRow.cells.length; a++) {
+        numbersData.push(parseInt(tableRow.cells[a].innerHTML));
+    }
+    
     let jsonData = {
         label: countryData,
         data: numbersData,
         backgroundColor: getRandomRGB()
     };
 
-    for (let a = 2; a < tableRow.cells.length; a++) {
-        numbersData.push(parseInt(tableRow.cells[a].innerHTML));
-    }
     dataTable2.push(jsonData);
 }
 
