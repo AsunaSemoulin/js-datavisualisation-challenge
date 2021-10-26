@@ -47,12 +47,12 @@ let updateChart = async () => {
     let data = await response.json();
 
     let generateLabels = () => {
-    let labels = [];
+        let labels = [];
 
-    for (let i = 0; i < data.length; i++) {
-        labels.push(i.toString());
-    }
-        return labels;
+        for (let i = 0; i < data.length; i++) {
+            labels.push(i.toString());
+        }
+            return labels;
     }
 
     myChart.data.labels = generateLabels();
